@@ -1,0 +1,128 @@
+<!-- HTML form for user input -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+</head>
+<body>
+    <h1>Heart Disease Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="age">Age (in years):</label>
+        <input type="number" name="age" id="age" required><br>
+        
+        <label for="sex">Sex:</label>
+        <select name="sex" id="sex" required>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select><br>
+        
+        <label for="cp">Chest Pain Type:</label>
+        <select name="cp" id="cp" required>
+            <option value="0">Asymptomatic</option>
+            <option value="1">Atypical Angina</option>
+            <option value="2">Non-Anginal Pain</option>
+            <option value="3">Typical Angina</option>
+        </select><br>
+        
+        <label for="trestbps">Resting Blood Pressure (mm Hg):</label>
+        <input type="number" name="trestbps" id="trestbps" required><br>
+        
+        <label for="chol">Serum Cholesterol (mg/dl):</label>
+        <input type="number" name="chol" id="chol" required><br>
+        
+        <label for="fbs">Fasting Blood Sugar > 120 mg/dl:</label>
+        <select name="fbs" id="fbs" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+        
+        <label for="restecg">Resting ECG:</label>
+        <select name="restecg" id="restecg" required>
+            <option value="0">Showing probable or definite left ventricular hypertrophy by Estes’ criteria</option>
+            <option value="1">Normal</option>
+            <option value="2">Having ST-T wave abnormality</option>
+        </select><br>
+        
+        <label for="thalach">Maximum Heart Rate Achieved:</label>
+        <input type="number" name="thalach" id="thalach" required><br>
+        
+        <label for="exang">Exercise Induced Angina:</label>
+        <select name="exang" id="exang" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br>
+        
+        <label for="oldpeak">ST Depression Induced by Exercise Relative to Rest:</label>
+        <input type="number" step="0.1" name="oldpeak" id="oldpeak" required><br>
+        
+        <label for="slope">The Slope of the Peak Exercise ST Segment:</label>
+        <select name="slope" id="slope" required>
+            <option value="0">Downsloping</option>
+            <option value="1">Flat</option>
+            <option value="2">Upsloping</option>
+        </select><br>
+        
+        <label for="ca">Number of Major Vessels (0-3):</label>
+        <input type="number" name="ca" id="ca" min="0" max="3" required><br>
+        
+        <label for="thal">Thal:</label>
+        <select name="thal" id="thal" required>
+            <option value="1">Normal</option>
+            <option value="2">Fixed Defect</option>
+            <option value="3">Reversible Defect</option>
+        </select><br>
+        
+        <button type="submit">Predict</button>
+    </form>
+    
+    {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+    {% endif %}
+    
+    <h2>Feature Descriptions</h2>
+    <ul>
+        <li><strong>Age:</strong> Age in years.</li>
+        <li><strong>Sex:</strong> 1 = male, 0 = female.</li>
+        <li><strong>Chest Pain Type (cp):</strong>
+            <ul>
+                <li>0: Asymptomatic</li>
+                <li>1: Atypical Angina</li>
+                <li>2: Non-Anginal Pain</li>
+                <li>3: Typical Angina</li>
+            </ul>
+        </li>
+        <li><strong>Resting Blood Pressure (trestbps):</strong> Resting blood pressure in mm Hg.</li>
+        <li><strong>Serum Cholesterol (chol):</strong> Serum cholesterol in mg/dl.</li>
+        <li><strong>Fasting Blood Sugar (fbs):</strong> Fasting blood sugar > 120 mg/dl (0 = no, 1 = yes).</li>
+        <li><strong>Resting ECG (restecg):</strong>
+            <ul>
+                <li>0: Showing probable or definite left ventricular hypertrophy by Estes’ criteria</li>
+                <li>1: Normal</li>
+                <li>2: Having ST-T wave abnormality</li>
+            </ul>
+        </li>
+        <li><strong>Maximum Heart Rate Achieved (thalach):</strong> Maximum heart rate achieved.</li>
+        <li><strong>Exercise Induced Angina (exang):</strong> 1 = yes, 0 = no.</li>
+        <li><strong>ST Depression Induced by Exercise Relative to Rest (oldpeak):</strong> ST depression induced by exercise relative to rest.</li>
+        <li><strong>The Slope of the Peak Exercise ST Segment (slope):</strong>
+            <ul>
+                <li>0: Downsloping</li>
+                <li>1: Flat</li>
+                <li>2: Upsloping</li>
+            </ul>
+        </li>
+        <li><strong>Number of Major Vessels (ca):</strong> Number of major vessels (0-3).</li>
+        <li><strong>Thal:</strong>
+            <ul>
+                <li>1: Normal</li>
+                <li>2: Fixed Defect</li>
+                <li>3: Reversible Defect</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
+
+
